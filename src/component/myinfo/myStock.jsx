@@ -1,9 +1,9 @@
 import React from 'react';
 
-const myStock = () => {
+const MyStock = () => {
     return (
         <></>
     );
 };
 
-export default myStock;
+export default MyStock;
