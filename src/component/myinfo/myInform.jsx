@@ -1,9 +1,9 @@
 import React from 'react';
 
-const myInform = () => {
+const MyInform = () => {
     return (
         <></>
     );
 };
 
-export default myInform;
+export default MyInform;
