@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MainRank = () => {
+const MyAsset = () => {
     return (
        <></>
     );
 };
 
-export default MainRank;
+export default MyAsset;
