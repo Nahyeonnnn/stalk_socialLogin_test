@@ -1,9 +1,9 @@
 import React from 'react';
 
-const DetailGraph = () => {
+const SearchRecent = () => {
     return (
         <></>
     );
 };
 
-export default DetailGraph;
+export default SearchRecent;

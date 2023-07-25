@@ -1,9 +1,9 @@
 import React from 'react';
 
-const DetailGraph = () => {
+const myInform = () => {
     return (
         <></>
     );
 };
 
-export default DetailGraph;
+export default myInform;
