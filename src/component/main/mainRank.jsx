@@ -10,7 +10,7 @@ const RankBox = styled.div`
 const MainRank = () => {
   return (
     <>
-      <RankBox></RankBox>
+      <RankBox>오늘의 발견</RankBox>
     </>
   );
 };

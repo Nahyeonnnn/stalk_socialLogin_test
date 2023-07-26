@@ -10,7 +10,7 @@ const NewsBox = styled.div`
 const MainNews = () => {
   return (
     <>
-      <NewsBox></NewsBox>
+      <NewsBox>뉴스</NewsBox>
     </>
   );
 };

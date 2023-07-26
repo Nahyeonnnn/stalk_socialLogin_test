@@ -10,7 +10,7 @@ const InvestBox = styled.div`
 const MainMyInvest = () => {
   return (
     <>
-      <InvestBox></InvestBox>
+      <InvestBox>투자</InvestBox>
     </>
   );
 };
