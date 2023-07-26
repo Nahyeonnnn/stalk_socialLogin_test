@@ -55,10 +55,11 @@ const TopBar = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const isMainPage = location.pathname === '/main';
     const isNewsPage = location.pathname === '/news';
     const istradePage = location.pathname === '/trade';
 
-  function moveToBack(){ // mainPage로 이동하는 함수
+  function moveToBack(){ // 뒤로 이동하는 함수
     navigate(-1)
   }
 
@@ -66,7 +67,7 @@ const TopBar = () => {
     navigate(`/search`)
   }
 
-  function moveToSetting(){ // myPage로 이동하는 함수
+  function moveToSetting(){ // Setting로 이동하도록 변경해야함
     navigate(`/myInfo`)
   }
 
@@ -75,7 +76,7 @@ const TopBar = () => {
             <TopBarBox>
 
                 <TopBarBackBtn onClick={moveToBack}>
-                <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'F1D00A' }}/>
+                {!isMainPage && <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'F1D00A' }}/>}
                 </TopBarBackBtn>
            
                 <TopBarTitleBox>STALK</TopBarTitleBox>
@@ -84,7 +85,7 @@ const TopBar = () => {
                 {!isNewsPage && !istradePage && <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: 'F1D00A' }}/>}
                 </TopBarSearchBtn>
                 
-                <TopBarSetBtn>
+                <TopBarSetBtn onClick={moveToSetting}>
                 {!isNewsPage && !istradePage && <FontAwesomeIcon icon={faGear} style={{ color: 'F1D00A' }}/>}
                 </TopBarSetBtn>
 
