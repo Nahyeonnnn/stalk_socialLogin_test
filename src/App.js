@@ -6,6 +6,7 @@ import DetailPage from './page/detailPage';
 import SearchPage from './page/searchPage';
 import TradePage from './page/tradePage';
 import MyInfoPage from './page/myInfoPage';
+import NotFoundPage from './page/notFoundPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/search" element={<SearchPage />} />
       <Route path="/trade" element={<TradePage />} />
       <Route path="/myInfo" element={<MyInfoPage />} />
+      <Route path="*" element={<NotFoundPage />} />
       </Routes>
       </BrowserRouter>
     </>
