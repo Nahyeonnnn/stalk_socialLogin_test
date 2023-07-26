@@ -54,9 +54,11 @@ const RankOptionBtn5 = styled.button`
 `;
 
 const RankBox = styled.div`
-  width: 5rem;
-  height: 5rem;
-  background-color: skyblue;
+  width: 90vw;
+  height: 50vh;
+  margin: auto;
+  border-radius: 1rem;
+  background-color: rgb(255, 255, 255, 0.9);
 `;
 
 const MainRank = () => {
@@ -96,7 +98,7 @@ const MainRank = () => {
           관심
         </RankOptionBtn5>
       </RankOptionBox>
-      <RankBox>오늘의 발견</RankBox>
+      <RankBox></RankBox>
     </>
   );
 };
