@@ -74,6 +74,7 @@ const MainPage = () => {
           뉴스
         </NewsBtn>
       </MiddleBar>
+
       {active === "Invest" && <MainMyInvest></MainMyInvest>}
       {active === "Rank" && <MainRank></MainRank>}
       {active === "News" && <MainNews></MainNews>}

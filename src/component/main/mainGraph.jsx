@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const ChartBox = styled.div`
@@ -33,20 +33,43 @@ const ChartButton = styled.button`
 `;
 
 const MainGraph = () => {
+  const [activeButton, setActiveButton] = useState(1);
+
+  const renderInfo = () => {
+    switch (activeButton) {
+      case 1:
+        return (
+          <>
+            <div>ddd</div>
+          </>
+        );
+      case 2:
+        return "코스닥 정보";
+      case 3:
+        return "환율 정보";
+      case 4:
+        return "나스닥 정보";
+      case 5:
+        return "다우존스 정보";
+      case 6:
+        return "S&P500 정보";
+      default:
+        return "코스피 정보";
+    }
+  };
+
   return (
     <>
       <ChartBox>
-        <ChartType>
-          코스피 <br></br> 2,609.76
-        </ChartType>
+        <ChartType>{renderInfo()}</ChartType>
       </ChartBox>
       <ChartButtonBox>
-        <ChartButton></ChartButton>
-        <ChartButton></ChartButton>
-        <ChartButton></ChartButton>
-        <ChartButton></ChartButton>
-        <ChartButton></ChartButton>
-        <ChartButton></ChartButton>
+        <ChartButton onClick={() => setActiveButton(1)}></ChartButton>
+        <ChartButton onClick={() => setActiveButton(2)}></ChartButton>
+        <ChartButton onClick={() => setActiveButton(3)}></ChartButton>
+        <ChartButton onClick={() => setActiveButton(4)}></ChartButton>
+        <ChartButton onClick={() => setActiveButton(5)}></ChartButton>
+        <ChartButton onClick={() => setActiveButton(6)}></ChartButton>
       </ChartButtonBox>
     </>
   );
