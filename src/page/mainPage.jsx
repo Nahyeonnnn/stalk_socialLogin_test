@@ -6,6 +6,8 @@ import MainGraph from "../component/main/mainGraph";
 import MainMyInvest from "../component/main/mainMyInvest";
 import MainNews from "../component/main/mainNews";
 import MainRank from "../component/main/mainRank";
+import BottomBar from "../component/global/bottomBar";
+import TopBar from "../component/global/topBar";
 
 const MiddleBar = styled.div`
   display: flex;
@@ -58,6 +60,7 @@ const MainPage = () => {
 
   return (
     <>
+      <TopBar></TopBar>
       <MainInfo></MainInfo>
       <MainGraph></MainGraph>
       <MiddleBar>
@@ -78,6 +81,7 @@ const MainPage = () => {
       {active === "Invest" && <MainMyInvest></MainMyInvest>}
       {active === "Rank" && <MainRank></MainRank>}
       {active === "News" && <MainNews></MainNews>}
+      <BottomBar></BottomBar>
     </>
   );
 };
