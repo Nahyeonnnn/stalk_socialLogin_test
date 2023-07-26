@@ -26,7 +26,6 @@ const AmountTextRightRate = styled.div`
 `;
 
 const InvestBox = styled.div`
-  /* height: 100vh; */
   padding: 1rem 2rem 3rem 2rem;
 `;
 
