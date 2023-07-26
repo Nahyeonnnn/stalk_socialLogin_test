@@ -12,18 +12,22 @@ const BottomBarBox = styled.div`
     flex-direction : row;
     justify-content : space-evenly;
     align-items : center;
-    background-color : yellow;
+    background-color : white;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     height: 6vh;
     width: 100vw; 
-    /* width : 23.125rem;
-    height : 3.125rem; */
     box-shadow: 0 -.0625rem .0625rem rgba(0, 0, 0, 0.2);
     border-radius : 0.625rem 0.625rem 0rem 0rem;
 `
+const BottomBarNewsBtn = styled.div`
+`
+
+const BottomBarMyInfoBtn = styled.div`
+`
+
 const BottomBarMainBtnBox = styled.div`
     display : flex;
     align-items : center;
@@ -43,28 +47,32 @@ const BottomBar = () => {
     navigate(`/main`)
   }
 
-  function moveToSearch(){ // searchPage로 이동하는 함수
+  function moveToNews(){ // newsPage로 이동하도록 바꿔야함!
     navigate(`/search`)
   }
 
-  function moveToMypage(){ // myPage로 이동하는 함수
+  function moveToMyInfo(){ // myPage로 이동하는 함수
     navigate(`/myInfo`)
   }
 
   return (
     <>
         <BottomBarBox>
-        <div onClick={moveToSearch}>
-        <FontAwesomeIcon icon={faNewspaper} style={{ color: '#3E497A' }}/>
-        </div>
-        <BottomBarMainBtnBox>
-        <div onClick={moveToMain}>
-        <FontAwesomeIcon icon={faHome} style={{ color: 'white' }}/>
-        </div>
-        </BottomBarMainBtnBox>
-        <div onClick={moveToMypage}>
-        <FontAwesomeIcon icon={faUserTie} style={{ color: '#3E497A' }}/>
-        </div>
+
+            <BottomBarNewsBtn onClick={moveToNews}>
+            <FontAwesomeIcon icon={faNewspaper} style={{ color: '#3E497A' }}/>
+            </BottomBarNewsBtn>
+        
+            <BottomBarMainBtnBox>
+            <div onClick={moveToMain}>
+            <FontAwesomeIcon icon={faHome} style={{ color: 'white' }}/>
+            </div>
+            </BottomBarMainBtnBox>
+
+            <BottomBarMyInfoBtn onClick={moveToMyInfo}>
+            <FontAwesomeIcon icon={faUserTie} style={{ color: '#3E497A' }}/>
+            </BottomBarMyInfoBtn>
+        
         </BottomBarBox>
     </>
   );
