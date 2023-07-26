@@ -29,6 +29,7 @@ const ChartButton = styled.button`
   border-radius: 50%;
   border-style: none;
   margin: 10px 5px;
+  cursor: pointer;
 `;
 
 const MainGraph = () => {
