@@ -23,7 +23,8 @@ const ChartButtonBox = styled.div`
 `;
 
 const ChartButton = styled.button`
-  background-color: lightgray;
+  background-color: ${({ isActive }) =>
+    isActive ? "rgba(241, 208, 10, 0.92)" : "lightgray"};
   width: 5px;
   height: 12px;
   border-radius: 50%;
@@ -64,12 +65,30 @@ const MainGraph = () => {
         <ChartType>{renderInfo()}</ChartType>
       </ChartBox>
       <ChartButtonBox>
-        <ChartButton onClick={() => setActiveButton(1)}></ChartButton>
-        <ChartButton onClick={() => setActiveButton(2)}></ChartButton>
-        <ChartButton onClick={() => setActiveButton(3)}></ChartButton>
-        <ChartButton onClick={() => setActiveButton(4)}></ChartButton>
-        <ChartButton onClick={() => setActiveButton(5)}></ChartButton>
-        <ChartButton onClick={() => setActiveButton(6)}></ChartButton>
+        <ChartButton
+          isActive={activeButton === 1}
+          onClick={() => setActiveButton(1)}
+        ></ChartButton>
+        <ChartButton
+          isActive={activeButton === 2}
+          onClick={() => setActiveButton(2)}
+        ></ChartButton>
+        <ChartButton
+          isActive={activeButton === 3}
+          onClick={() => setActiveButton(3)}
+        ></ChartButton>
+        <ChartButton
+          isActive={activeButton === 4}
+          onClick={() => setActiveButton(4)}
+        ></ChartButton>
+        <ChartButton
+          isActive={activeButton === 5}
+          onClick={() => setActiveButton(5)}
+        ></ChartButton>
+        <ChartButton
+          isActive={activeButton === 6}
+          onClick={() => setActiveButton(6)}
+        ></ChartButton>
       </ChartButtonBox>
     </>
   );
