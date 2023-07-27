@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const NewsBox = styled.div`
   width: 90vw;
-  /* height: 50vh; */
   margin: auto;
   color: white;
   padding-top: 1rem;
