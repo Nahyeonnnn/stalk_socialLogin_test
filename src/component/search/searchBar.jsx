@@ -69,7 +69,7 @@ const AutoSearchData = styled.li`
 const SearchBar = () => {
 
     //axios 연결 시 주식 리스트를 저장할 변수
-    // const [stockList, setStockList]=useState(testList);
+    const [stockList, setStockList]=useState(testList);
     //검색어를 저장하기 위한 useState
     const [query, setQuery]=useState("");
     const [suggestions, setSuggestions] = useState([]);
@@ -101,16 +101,16 @@ const SearchBar = () => {
         setShowSuggestions(false);
     }
 
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        const results = searchData(query);
-        setSearchResults(results);
-        setSuggestions([]); // 자동완성 결과 초기화
-        setShowSuggestions(false);
-        if (typeof onSearch === "function") {
-          onSearch(results);
-        }
-    };
+    // const handleFormSubmit = (e) => {
+    //     e.preventDefault();
+    //     const results = searchData(query);
+    //     setSearchResults(results);
+    //     setSuggestions([]); // 자동완성 결과 초기화
+    //     setShowSuggestions(false);
+    //     if (typeof onSearch === "function") {
+    //       onSearch(results);
+    //     }
+    // };
 
     const searchData = (query) => {
         const results = stockList.filter((item)=>
