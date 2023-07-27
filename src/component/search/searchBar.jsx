@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import {BiSearch} from "@react-icons/all-files/bi/BiSearch"
 import TopBar from '../global/topBar';
+import BottomBar from '../global/bottomBar';
 
 //axios 연결 시 받을 주식 리스트 예시
 //일단은 주식 이름 string이 들어있다고 가정함
@@ -30,8 +31,8 @@ const SearchSmallContainer = styled.div`
     position: relative;
     span {
         position: absolute;
-        left: 0.8rem;
-        top: 1.8rem;
+        left: 0.7rem;
+        top: 4.5rem;
     }
 `;
 
@@ -52,9 +53,6 @@ const AutoSearchContainer = styled.div`
   border: none;
 `;
 
-const AutoSearchWrap = styled.ul`
-
-`;
 
 const AutoSearchData = styled.li`
   padding: 10px 8px;
@@ -105,8 +103,10 @@ const SearchBar = () => {
     return (
         <>
         <SearchContainer>
-            <TopBar></TopBar>
             <SearchSmallContainer>
+                <TopBar></TopBar>
+                <br/>
+                <br/>
                 <span>
                 <BiSearch onClick={SearchIconClick} color='gray'/>
                 </span>
@@ -122,6 +122,7 @@ const SearchBar = () => {
                 </AutoSearchContainer>
             </SearchSmallContainer>
         </SearchContainer>
+        <BottomBar></BottomBar>
         </>
     );
 };
