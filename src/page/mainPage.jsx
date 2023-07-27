@@ -14,6 +14,7 @@ const MiddleBar = styled.div`
   width: 100vw;
   height: 8vh;
   justify-content: space-evenly;
+  background-color: rgb(255, 255, 255, 0.1);
 `;
 
 const InvestBtn = styled.button`
