@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import {BiSearch} from "@react-icons/all-files/bi/BiSearch"
-import TopBar from '../global/topBar';
 import BottomBar from '../global/bottomBar';
 import SearchRecent from './searchRecent';
 
@@ -40,11 +39,11 @@ const SearchSmallContainer = styled.div`
 const SearchInput = styled.input`
     border: 0;
     background-color: var(--gray, #F9F9F9);
-    width: 80vw;
+    width: 75vw;
     height: 1.5rem;
     border-radius: 12px;
     padding: 0.625rem 1rem 0.625rem 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 `;
 
 const AutoSearchContainer = styled.div`
@@ -148,9 +147,6 @@ const SearchBar = () => {
         <>
         <SearchContainer>
             <SearchSmallContainer>
-                <TopBar></TopBar>
-                <br/>
-                <br/>
                 <span>
                 <BiSearch onClick={SearchIconClick} color='gray'/>
                 </span>
