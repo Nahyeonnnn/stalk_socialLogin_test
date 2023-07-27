@@ -76,6 +76,29 @@ const PurchaseConfirm = styled.button`
   font-size: 1rem;
 `;
 
+const NumberBox = styled.div`
+  background-color: #f1d00a;
+  width: 100vw;
+  height: 40vh;
+  display: flex;
+  position: fixed;
+  bottom: 2rem;
+  margin: auto;
+  border-radius: 1rem;
+  justify-content: space-around;
+  flex-direction: column;
+`;
+
+const ThreeNumberBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const NumberEach = styled.button`
+  font-size: 2rem;
+  font-weight: bold;
+`;
+
 const TradePage = () => {
   const [inputValue, setInputValue] = useState("");
 
