@@ -61,7 +61,7 @@ const DetailPage = () => {
     return (
         <> 
             <TopBar></TopBar>
-            <DetailGraph></DetailGraph>
+            <DetailGraph styled="margin-top : 3rem"></DetailGraph>
             <MiddleBar>
 
                 <StaticBtn isActive={active === "Static"} onClick={() => setActive("Static")}>
@@ -78,7 +78,7 @@ const DetailPage = () => {
 
             </MiddleBar>
 
-            {active === "Static" && <DetailStatic></DetailStatic> && <DetailButton></DetailButton>}
+            {active === "Static" && <DetailStatic></DetailStatic>}
             {active === "Info" && <DetailInfo></DetailInfo>}
             {active === "News" && <DetailNews></DetailNews>}
             
