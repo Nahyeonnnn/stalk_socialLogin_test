@@ -9,8 +9,10 @@ import MyInfoPage from "./page/myInfoPage";
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  html, body {
+    height : 100%;
     margin: 0;
+    padding : 0;
   }
 `;
 
