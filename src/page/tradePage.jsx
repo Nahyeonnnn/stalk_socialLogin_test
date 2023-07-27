@@ -77,6 +77,17 @@ const PurchaseConfirm = styled.button`
 `;
 
 const TradePage = () => {
+  const [inputValue, setInputValue] = useState("");
+
+  // This function adds the passed digit to the current input
+  const addDigit = (digit) => {
+    setInputValue((prevValue) => prevValue + digit);
+  };
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <>
       <TopBar></TopBar>
@@ -87,9 +98,29 @@ const TradePage = () => {
       </PriceBox>
       <PurchastText>몇 주를 구매할까요?</PurchastText>
       <FormContainer>
-        <PurchaseBox></PurchaseBox>
+        <PurchaseBox
+          value={inputValue}
+          onChange={handleInputChange}
+        ></PurchaseBox>
         <PurchaseConfirm>확인</PurchaseConfirm>
       </FormContainer>
+      <NumberBox>
+        <ThreeNumberBox>
+          <NumberEach onClick={() => addDigit(1)}>1</NumberEach>
+          <NumberEach onClick={() => addDigit(2)}>2</NumberEach>
+          <NumberEach onClick={() => addDigit(3)}>3</NumberEach>
+        </ThreeNumberBox>
+        <ThreeNumberBox>
+          <NumberEach onClick={() => addDigit(4)}>4</NumberEach>
+          <NumberEach onClick={() => addDigit(5)}>5</NumberEach>
+          <NumberEach onClick={() => addDigit(6)}>6</NumberEach>
+        </ThreeNumberBox>
+        <ThreeNumberBox>
+          <NumberEach onClick={() => addDigit(7)}>7</NumberEach>
+          <NumberEach onClick={() => addDigit(8)}>8</NumberEach>
+          <NumberEach onClick={() => addDigit(9)}>9</NumberEach>
+        </ThreeNumberBox>
+      </NumberBox>
       <BottomBar></BottomBar>
     </>
   );
