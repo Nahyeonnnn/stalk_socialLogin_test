@@ -17,6 +17,7 @@ flex-shrink: 0;
 border-radius: 20px;
 background: #F1D00A;
 margin-top: 3rem;
+z-index:0;
 `
 
 const Text = styled.p`
@@ -42,13 +43,43 @@ line-height: 22px; /* 68.75% */
 letter-spacing: -0.8px;
 `;
 
+const Btn = styled.button`
+width: 88px;
+height: 52px;
+flex-shrink: 0;
+border-radius: 10px;
+background-color: #FFF;
+border : none;
+z-index: 1;
+margin: 5%;
+
+color: #000;
+text-align: center;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 22px; /* 157.143% */
+letter-spacing: -0.35px;
+`
+const BtnContainer = styled.div`
+      display: flex;
+  justify-content: center; /* 가로 방향 중앙 정렬 */
+  align-items: center; /* 세로 방향 중앙 정렬 */
+`
+
+
 const MyAsset = () => {
     return (
        <>
        <Container>
        <Assetbox>
         <Text>총 자산</Text>
-        <AssetText>Props원</AssetText>
+        <AssetText>93,214,620원</AssetText>
+        <BtnContainer>
+            <Btn>예금</Btn>
+            <Btn>출금</Btn>
+        </BtnContainer>
        </Assetbox>
        </Container>
        </>
