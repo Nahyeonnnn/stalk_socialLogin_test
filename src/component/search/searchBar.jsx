@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import {BiSearch} from "@react-icons/all-files/bi/BiSearch"
-import TopBar from '../global/topBar';
-import BottomBar from '../global/bottomBar';
 import SearchRecent from './searchRecent';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import NaverIcon from "./NaverIcon.png";
+
+library.add(faMagnifyingGlass);
 
 //axios 연결 시 받을 주식 리스트 예시
 //일단은 주식 이름 string이 들어있다고 가정함
@@ -28,42 +31,93 @@ const SearchContainer = styled.div`
     justify-content: center;
 `;
 
+const SearchIcon = styled(FontAwesomeIcon)`
+  z-index: 2;
+  position: absolute;
+  color: gray;
+  top: 2.8rem;
+  left: 0.6rem;
+  pointer-events: none; /* This prevents the icon from blocking the input field */
+`;
+
 const SearchSmallContainer = styled.div`
     position: relative;
-    span {
-        position: absolute;
-        left: 0.7rem;
-        top: 4.5rem;
-    }
 `;
 
 const SearchInput = styled.input`
     border: 0;
     background-color: var(--gray, #F9F9F9);
-    width: 80vw;
+    width: 75vw;
     height: 1.5rem;
     border-radius: 12px;
     padding: 0.625rem 1rem 0.625rem 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    z-index: 1;
 `;
 
 const AutoSearchContainer = styled.div`
-  width: inherit;
-  position: absolute;
-  border: none;
+    position: absolute;
+    border: none;
+    top: 5rem;
+    /* left: 2rem; */
+    width: 85vw;
 `;
 
-
-const AutoSearchData = styled.li`
-  padding: 10px 8px;
+const AutoSearchData = styled.p`
+  margin: 0%;
+  padding-left: 2.5rem;
   width: inherit;
   font-size: 14px;
   font-weight: bold;
-  z-index: 4;
   letter-spacing: 2px;
+  color: white;
   &:hover {
     cursor: pointer;
   }
+`;
+
+const EachDataDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+`;
+
+const EachStockDataDiv = styled.div`
+    position: relative;
+`;
+
+const EachStockData = styled.p`
+    font-size: 12px;
+    color: gray;
+    margin: 0;
+    padding-left: 2.5rem;
+`;
+
+const EachStockIcon = styled.img`
+    position: absolute;
+    width: 1.875rem;
+    border-radius: 50%;
+`;
+
+const EachPercentDataDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+`;
+
+const StockPrice = styled.p`
+    margin: 0;
+    font-size: 12px;
+    margin-left: auto;
+    color: white;
+    font-weight: bold;
+`;
+
+const PercentData = styled.p`
+    margin: 0;
+    font-size: 12px;
+    margin-left: auto;
+    color: red;//조건 줘서 올라갈 경우 red, 내려갈 경우 blue로 보이게 설정하기
 `;
 
 const SearchBar = () => {
@@ -148,24 +202,26 @@ const SearchBar = () => {
         <>
         <SearchContainer>
             <SearchSmallContainer>
-                <TopBar></TopBar>
-                <br/>
-                <br/>
-                <span>
-                <BiSearch onClick={SearchIconClick} color='gray'/>
-                </span>
+                <SearchIcon icon={faMagnifyingGlass} />
                 <SearchInput type="text" value={query} onChange={handleInputSearch} placeholder='검색하기'></SearchInput>
-                {query.length > 0 && showSuggestions && (
+            </SearchSmallContainer>
+            {query.length > 0 && showSuggestions && (
                 <AutoSearchContainer>
-                    <ul>
-                        {
-                            suggestions.map((result)=>(
-                                <div>
+                    {
+                        suggestions.map((result)=>(
+                            <EachDataDiv>
+                                <EachStockDataDiv>
+                                    <EachStockIcon src={NaverIcon}></EachStockIcon>
                                     <AutoSearchData>{result.prdt_name}</AutoSearchData>
-                                </div>
-                            ))
-                        }
-                    </ul>
+                                    <EachStockData>주식 설명</EachStockData>
+                                </EachStockDataDiv>
+                                <EachPercentDataDiv>
+                                    <StockPrice>7500</StockPrice>
+                                    <PercentData>+500 (+5%)</PercentData>
+                                </EachPercentDataDiv>
+                            </EachDataDiv>
+                        ))
+                    }
                 </AutoSearchContainer>)}
                 {searchResults.length > 0 && (
                     <AutoSearchContainer>
@@ -180,12 +236,8 @@ const SearchBar = () => {
                         </ul>
                     </AutoSearchContainer>
                 )
-
                 }
-                
-            </SearchSmallContainer>
         </SearchContainer>
-        <BottomBar></BottomBar>
         </>
     );
 };
