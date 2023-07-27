@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 const TextBox = styled.div`
   display: flex;
+  margin-top: 3rem;
+  margin-left: 2.5rem;
 `;
 
 const Text = styled.p`
