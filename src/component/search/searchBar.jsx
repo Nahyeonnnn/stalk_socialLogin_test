@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import {BiSearch} from "@react-icons/all-files/bi/BiSearch"
+import TopBar from '../global/topBar';
 
 //axios 연결 시 받을 주식 리스트 예시
 //일단은 주식 이름 string이 들어있다고 가정함
@@ -45,14 +46,10 @@ const SearchInput = styled.input`
 `;
 
 const AutoSearchContainer = styled.div`
-  z-index: 3;
-  height: 50vh;
-  width: 400px;
-  background-color: #fff;
+  width: inherit;
+  background-color: none;
   position: absolute;
-  top: 45px;
-  border: 2px solid;
-  padding: 15px;
+  border: none;
 `;
 
 const AutoSearchWrap = styled.ul`
@@ -61,7 +58,7 @@ const AutoSearchWrap = styled.ul`
 
 const AutoSearchData = styled.li`
   padding: 10px 8px;
-  width: 100%;
+  width: inherit;
   font-size: 14px;
   font-weight: bold;
   z-index: 4;
@@ -88,7 +85,14 @@ const SearchBar = () => {
     }
 
     function SearchIconClick(){
-
+        axios
+            .get(``)
+            .then((res)=>{
+                setStockList(res.data);
+            })
+            .catch((e)=>{
+                console.log(e);
+            });
     }
 
     //axios 연결 시 주식 리스트를 저장할 변수
@@ -101,20 +105,23 @@ const SearchBar = () => {
     return (
         <>
         <SearchContainer>
+            <TopBar></TopBar>
             <SearchSmallContainer>
                 <span>
                 <BiSearch onClick={SearchIconClick} color='gray'/>
                 </span>
                 <SearchInput type="text" value={query} onChange={handleInputSearch} placeholder='검색하기'></SearchInput>
+                <AutoSearchContainer>
+                    <ul>
+                        {
+                            stockList.map((result)=>(
+                                <AutoSearchData>{result.prdt_name}</AutoSearchData>
+                            ))
+                        }
+                    </ul>
+                </AutoSearchContainer>
             </SearchSmallContainer>
         </SearchContainer>
-        <AutoSearchContainer>
-            <AutoSearchData>
-                
-            </AutoSearchData>
-        </AutoSearchContainer>
-        
-
         </>
     );
 };
