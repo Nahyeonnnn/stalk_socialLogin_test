@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import SearchRecent from './searchRecent';
@@ -120,6 +120,13 @@ const PercentData = styled.p`
     color: red;//조건 줘서 올라갈 경우 red, 내려갈 경우 blue로 보이게 설정하기
 `;
 
+const RecentSearch = styled.p`
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 1rem;
+`;
+
 const SearchBar = () => {
 
     //axios 연결 시 주식 리스트를 저장할 변수
@@ -128,7 +135,7 @@ const SearchBar = () => {
     const [query, setQuery]=useState("");
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions]=useState(false);
-    const [searchResults, setSearchResults]=useState([]);//검색 결과 저장을 위한 useState
+    const [recentSearchData, setRecentSearch]=useState([]);//최근 검색한 데이터 useState
 
     function handleInputSearch(e){
         const {value} = e.target;
@@ -155,17 +162,6 @@ const SearchBar = () => {
         setShowSuggestions(false);
     }
 
-    // const handleFormSubmit = (e) => {
-    //     e.preventDefault();
-    //     const results = searchData(query);
-    //     setSearchResults(results);
-    //     setSuggestions([]); // 자동완성 결과 초기화
-    //     setShowSuggestions(false);
-    //     if (typeof onSearch === "function") {
-    //       onSearch(results);
-    //     }
-    // };
-
     const searchData = (query) => {
         const results = stockList.filter((item)=>
             item.prdt_name.includes(query)
@@ -173,37 +169,70 @@ const SearchBar = () => {
         return results;
     }
 
-    // const handleKeyPress = (e) => {
-    //     if(e.key == "Enter"){
-    //         handleFormSubmit(e);
-    //     }
-    // };
+    const handleKeyPress = (e) => {
+        if(e.key === "Enter"){
+            //엔터를 눌렀을 때 실행할 함수
+            e.preventDefault();
+            console.log('엔터 키 누름!');
+            handleInputSearch(e);
+            let newSearch = query;
+            let newSearchArray = recentSearchData;
 
-    const handleInputBlur = () => {
-        setShowSuggestions(false);
+            if(newSearchArray===null){
+                newSearchArray=[];
+            }
+            
+            let isInList = testList.some(item => item.prdt_name === newSearch);
+
+            if(isInList===true){
+                newSearchArray.unshift(newSearch);
+                //중복 방지를 위해 Set 사용
+                newSearchArray = new Set(newSearchArray);
+                newSearchArray = [...newSearchArray];
+            }
+            
+            if(newSearchArray.length > 5){
+                newSearchArray.length=5;
+            }
+            setRecentSearch(newSearchArray);
+            localStorage.setItem('recent',JSON.stringify(newSearchArray));
+        }
     };
 
-    function SearchIconClick(){
-        axios
-            .get(``)
-            .then((res)=>{
-                setStockList(res.data);
-            })
-            .catch((e)=>{
-                console.log(e);
-            });
-    }
+    // function SearchIconClick(){
+    //     axios
+    //         .get(``)
+    //         .then((res)=>{
+    //             setStockList(res.data);
+    //         })
+    //         .catch((e)=>{
+    //             console.log(e);
+    //         });
+    // }
 
-    //useEffect(()=>{},[]);
+    useEffect(()=>{
+        const recentSearchDataString = localStorage.getItem('recent');
 
-    //input 태그에 onchange, onblur, onkeypress 속성 추가
+        if(recentSearchDataString === null || recentSearchDataString === undefined || recentSearchDataString === {}){
+            //localStorage에 데이터가 없을 경우
+            setRecentSearch([]);
+            //빈 배열 만들기
+        }
+        else{
+            //localStorage에 데이터가 있는 경우 받은 데이터를 JSON 해제(?)
+            console.log(recentSearchDataString);
+            setRecentSearch(JSON.parse(recentSearchDataString));
+        }
+    },[]);//처음 렌더링 될 때만 실행되게 함
+
+    //input 태그에 onblur 속성 필요하다면 추가하기
 
     return (
         <>
         <SearchContainer>
             <SearchSmallContainer>
                 <SearchIcon icon={faMagnifyingGlass} />
-                <SearchInput type="text" value={query} onChange={handleInputSearch} placeholder='검색하기'></SearchInput>
+                <SearchInput type="text" value={query} onChange={handleInputSearch} placeholder='검색하기' onKeyPress={handleKeyPress}></SearchInput>
             </SearchSmallContainer>
             {query.length > 0 && showSuggestions && (
                 <AutoSearchContainer>
@@ -223,20 +252,27 @@ const SearchBar = () => {
                         ))
                     }
                 </AutoSearchContainer>)}
-                {searchResults.length > 0 && (
+                {query.length === 0 && (
                     <AutoSearchContainer>
-                        <ul>
-                            {
-                                searchResults.map((result)=>(
-                                    <div>
-                                        <AutoSearchData>{result.prdt_name}</AutoSearchData>
-                                    </div>
-                                ))
+                        <RecentSearch>최근 검색 기록</RecentSearch>
+                        {recentSearchData !== null?(
+                            recentSearchData.map((recent)=>(
+                                <EachDataDiv>
+                                    <EachStockDataDiv>
+                                        <EachStockIcon src={NaverIcon}></EachStockIcon>
+                                        <AutoSearchData>{recent}</AutoSearchData>
+                                        <EachStockData>주식 설명</EachStockData>
+                                    </EachStockDataDiv>
+                                    <EachPercentDataDiv>
+                                        <StockPrice>7500</StockPrice>
+                                        <PercentData>+500 (+5%)</PercentData>
+                                    </EachPercentDataDiv>
+                                </EachDataDiv>
+                            ))):
+                            <RecentSearch>검색 기록이 없습니다.</RecentSearch>
                             }
-                        </ul>
                     </AutoSearchContainer>
-                )
-                }
+                    )}
         </SearchContainer>
         </>
     );
