@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const ChartBox = styled.div`
@@ -35,6 +35,17 @@ const ChartButton = styled.button`
 
 const MainGraph = () => {
   const [activeButton, setActiveButton] = useState(1);
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveButton((prevButton) => (prevButton % 6) + 1);
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const renderInfo = () => {
     switch (activeButton) {
