@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const NewsBox = styled.div`
   width: 90vw;
@@ -37,10 +38,18 @@ const NewsSource = styled.div`
 `;
 
 const MainNews = () => {
+
+  const navigate = useNavigate();
+
+  const handleNewsClick = () => {
+    navigate("/newsdetail");
+  };
+
+
   return (
     <>
       <NewsBox>
-        <NewsEach>
+        <NewsEach onClick={handleNewsClick}>
           <NewsTitle>
             테슬라 머시기 일론 머스크 머시기 화성 머시기 도지코인
             <NewsSource>파이낸셜 타임스 · 9분</NewsSource>

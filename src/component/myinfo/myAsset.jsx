@@ -11,12 +11,13 @@ const Container = styled.div`
 `;
 
 const Assetbox = styled.div`
-width: 277px;
-height: 215px;
+width: 17.3125rem;
+height: 13.4375rem;
 flex-shrink: 0;
-border-radius: 20px;
+border-radius: 1.25rem;
 background: #F1D00A;
 margin-top: 3rem;
+margin-bottom: 3rem;
 z-index:0;
 `
 
@@ -24,11 +25,11 @@ const Text = styled.p`
 color: #000;
 text-align: center;
 font-family: Inter;
-font-size: 12px;
+font-size: .75rem;
 font-style: normal;
 font-weight: 500;
-line-height: 22px; /* 183.333% */
-letter-spacing: -0.3px;
+line-height: 1.375rem; /* 183.333% */
+letter-spacing: -0.0187rem;
 margin-top: 1.5rem;
 `;
 
@@ -36,18 +37,18 @@ const AssetText = styled.p`
 color: #000;
 text-align: center;
 font-family: Inter;
-font-size: 32px;
+font-size: 2rem;
 font-style: normal;
 font-weight: 700;
-line-height: 22px; /* 68.75% */
-letter-spacing: -0.8px;
+line-height: 1.375rem; /* 68.75% */
+letter-spacing: -0.05rem;
 `;
 
 const Btn = styled.button`
-width: 88px;
-height: 52px;
+width: 5.5rem;
+height: 3.25rem;
 flex-shrink: 0;
-border-radius: 10px;
+border-radius: .625rem;
 background-color: #FFF;
 border : none;
 z-index: 1;
@@ -56,11 +57,11 @@ margin: 5%;
 color: #000;
 text-align: center;
 font-family: Inter;
-font-size: 14px;
+font-size: .875rem;
 font-style: normal;
 font-weight: 600;
-line-height: 22px; /* 157.143% */
-letter-spacing: -0.35px;
+line-height: 1.375rem; /* 157.143% */
+letter-spacing: -0.0219rem;
 `
 const BtnContainer = styled.div`
       display: flex;

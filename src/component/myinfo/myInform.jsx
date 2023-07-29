@@ -12,11 +12,11 @@ const TextBox = styled.div`
 const Text = styled.p`
 color: #FFF;
 text-align: center;
-font-size: 20px;
+font-size: 1.25rem;
 font-style: normal;
 font-weight: 700;
 line-height: 110%; /* 22px */
-letter-spacing: -0.5px;
+letter-spacing: -0.0313rem;
 margin-top: 5rem;
 `;
 
@@ -24,11 +24,11 @@ const EmailText = styled.p`
 color: #8F8F8F;
 text-align: center;
 font-family: Inter;
-font-size: 10px;
+font-size: .625rem;
 font-style: normal;
 font-weight: 500;
 line-height: 220%; /* 22px */
-letter-spacing: -0.25px;
+letter-spacing: -0.0156rem;
 margin-top:-1rem;
 `;
 

@@ -6,6 +6,9 @@ import DetailPage from "./page/detailPage";
 import SearchPage from "./page/searchPage";
 import TradePage from "./page/tradePage";
 import MyInfoPage from "./page/myInfoPage";
+import NewsPage from "./page/newsPage";
+import NewsdetailPage from "./page/newsdetailPage";
+import NotFoundPage from "./page/notFoundPage";
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -34,6 +37,9 @@ function App() {
             <Route path="/search" element={<SearchPage />} />
             <Route path="/trade" element={<TradePage />} />
             <Route path="/myInfo" element={<MyInfoPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/newsdetail" element={<NewsdetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
       </StyledApp>
