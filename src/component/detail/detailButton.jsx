@@ -20,6 +20,10 @@ const BtnBox = styled.div`
 
 const DetailButton = () => {
     const navigate = useNavigate();
+
+    function moveToTrade(){
+        navigate(`/trade`); // 
+    }
     return (
         <>
             <BtnContainer>
