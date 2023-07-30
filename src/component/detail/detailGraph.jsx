@@ -9,8 +9,8 @@ const SpaceBox = styled.div`
 
 const ChartBox = styled.div`
   display: flex;
-  width: 20rem;
-  height: 20rem;
+  width: 85vw;
+  height: 34vh;
   background-color: rgba(241, 208, 10, 0.92);
   border-radius: 1rem;
   margin : auto;
