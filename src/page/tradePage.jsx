@@ -101,6 +101,7 @@ const NumberEach = styled.button`
 
 const TradePage = () => {
   const [inputValue, setInputValue] = useState("");
+  const [active, setActive] = useState(0);
 
   // This function adds the passed digit to the current input
   const addDigit = (digit) => {
@@ -124,10 +125,11 @@ const TradePage = () => {
         <PurchaseBox
           value={inputValue}
           onChange={handleInputChange}
+          onClick={() => setActive(1)}
         ></PurchaseBox>
-        <PurchaseConfirm>확인</PurchaseConfirm>
+        <PurchaseConfirm onClick={() => setActive(0)}>확인</PurchaseConfirm>
       </FormContainer>
-      <NumberBox>
+      {active && <NumberBox>
         <ThreeNumberBox>
           <NumberEach onClick={() => addDigit(1)}>1</NumberEach>
           <NumberEach onClick={() => addDigit(2)}>2</NumberEach>
@@ -143,7 +145,8 @@ const TradePage = () => {
           <NumberEach onClick={() => addDigit(8)}>8</NumberEach>
           <NumberEach onClick={() => addDigit(9)}>9</NumberEach>
         </ThreeNumberBox>
-      </NumberBox>
+      </NumberBox>}
+    
       <BottomBar></BottomBar>
     </>
   );
