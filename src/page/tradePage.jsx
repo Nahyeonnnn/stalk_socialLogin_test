@@ -129,7 +129,7 @@ const TradePage = () => {
         ></PurchaseBox>
         <PurchaseConfirm onClick={() => setActive(0)}>확인</PurchaseConfirm>
       </FormContainer>
-      {active && <NumberBox>
+      {active === 1 && <NumberBox>
         <ThreeNumberBox>
           <NumberEach onClick={() => addDigit(1)}>1</NumberEach>
           <NumberEach onClick={() => addDigit(2)}>2</NumberEach>
