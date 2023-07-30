@@ -49,7 +49,7 @@ const BottomBar = () => {
   }
 
   function moveToNews(){ // newsPage로 이동하도록 바꿔야함!
-    navigate(`/search`)
+    navigate(`/news`)
   }
 
   function moveToMyInfo(){ // myPage로 이동하는 함수
