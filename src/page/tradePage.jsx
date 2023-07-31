@@ -88,10 +88,17 @@ const NumberBox = styled.div`
   justify-content: space-around;
   flex-direction: column;
 `;
-
 const ThreeNumberBox = styled.div`
   display: flex;
   justify-content: space-around;
+  padding:1rem;
+`;
+
+const LastNumberBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const NumberEach = styled.button`
@@ -101,13 +108,29 @@ const NumberEach = styled.button`
   border: 0rem;
 `;
 
+const TextEach = styled.button`
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+`;
+
 const TradePage = () => {
   const [inputValue, setInputValue] = useState("");
   const [active, setActive] = useState(0);
+  const [inputLength, setInputLength] = useState(0); // State to keep track of input length
 
   // This function adds the passed digit to the current input
   const addDigit = (digit) => {
     setInputValue((prevValue) => prevValue + digit);
+    setInputLength((prevLength) => prevLength + 1);
+  };
+
+  const removeDigit = () => {
+    setInputValue((prevValue) => prevValue.slice(0, -1));
+    setInputLength((prevLength) => prevLength - 1);
   };
 
   const handleInputChange = (event) => {
@@ -148,7 +171,11 @@ const TradePage = () => {
             <NumberEach onClick={() => addDigit(8)}>8</NumberEach>
             <NumberEach onClick={() => addDigit(9)}>9</NumberEach>
           </ThreeNumberBox>
-          <NumberEach onClick={() => addDigit(0)}>0</NumberEach>
+          <LastNumberBox>
+            <TextEach onClick={() => setInputValue("")}>전체삭제</TextEach>
+            <NumberEach onClick={() => addDigit(0)}>0</NumberEach>
+            <NumberEach onClick={() => removeDigit()}>⬅</NumberEach>
+          </LastNumberBox>
         </NumberBox>
       )}
 
