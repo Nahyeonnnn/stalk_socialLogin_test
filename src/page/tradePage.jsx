@@ -88,10 +88,17 @@ const NumberBox = styled.div`
   justify-content: space-around;
   flex-direction: column;
 `;
-
 const ThreeNumberBox = styled.div`
   display: flex;
   justify-content: space-around;
+  padding:1rem;
+`;
+
+const LastNumberBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const NumberEach = styled.button`
@@ -117,11 +124,10 @@ const TradePage = () => {
 
   // This function adds the passed digit to the current input
   const addDigit = (digit) => {
-    setInputValue((prevValue) => prevValue + digit.toString());
+    setInputValue((prevValue) => prevValue + digit);
     setInputLength((prevLength) => prevLength + 1);
   };
 
-  // This function removes the last digit from the input
   const removeDigit = () => {
     setInputValue((prevValue) => prevValue.slice(0, -1));
     setInputLength((prevLength) => prevLength - 1);
@@ -165,11 +171,11 @@ const TradePage = () => {
             <NumberEach onClick={() => addDigit(8)}>8</NumberEach>
             <NumberEach onClick={() => addDigit(9)}>9</NumberEach>
           </ThreeNumberBox>
-          <ThreeNumberBox>
+          <LastNumberBox>
             <TextEach onClick={() => setInputValue("")}>전체삭제</TextEach>
             <NumberEach onClick={() => addDigit(0)}>0</NumberEach>
             <NumberEach onClick={() => removeDigit()}>⬅</NumberEach>
-          </ThreeNumberBox>
+          </LastNumberBox>
         </NumberBox>
       )}
 
