@@ -97,6 +97,8 @@ const ThreeNumberBox = styled.div`
 const NumberEach = styled.button`
   font-size: 2rem;
   font-weight: bold;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0rem;
 `;
 
 const TradePage = () => {
@@ -129,24 +131,27 @@ const TradePage = () => {
         ></PurchaseBox>
         <PurchaseConfirm onClick={() => setActive(0)}>확인</PurchaseConfirm>
       </FormContainer>
-      {active === 1 && <NumberBox>
-        <ThreeNumberBox>
-          <NumberEach onClick={() => addDigit(1)}>1</NumberEach>
-          <NumberEach onClick={() => addDigit(2)}>2</NumberEach>
-          <NumberEach onClick={() => addDigit(3)}>3</NumberEach>
-        </ThreeNumberBox>
-        <ThreeNumberBox>
-          <NumberEach onClick={() => addDigit(4)}>4</NumberEach>
-          <NumberEach onClick={() => addDigit(5)}>5</NumberEach>
-          <NumberEach onClick={() => addDigit(6)}>6</NumberEach>
-        </ThreeNumberBox>
-        <ThreeNumberBox>
-          <NumberEach onClick={() => addDigit(7)}>7</NumberEach>
-          <NumberEach onClick={() => addDigit(8)}>8</NumberEach>
-          <NumberEach onClick={() => addDigit(9)}>9</NumberEach>
-        </ThreeNumberBox>
-      </NumberBox>}
-    
+      {active === 1 && (
+        <NumberBox>
+          <ThreeNumberBox>
+            <NumberEach onClick={() => addDigit(1)}>1</NumberEach>
+            <NumberEach onClick={() => addDigit(2)}>2</NumberEach>
+            <NumberEach onClick={() => addDigit(3)}>3</NumberEach>
+          </ThreeNumberBox>
+          <ThreeNumberBox>
+            <NumberEach onClick={() => addDigit(4)}>4</NumberEach>
+            <NumberEach onClick={() => addDigit(5)}>5</NumberEach>
+            <NumberEach onClick={() => addDigit(6)}>6</NumberEach>
+          </ThreeNumberBox>
+          <ThreeNumberBox>
+            <NumberEach onClick={() => addDigit(7)}>7</NumberEach>
+            <NumberEach onClick={() => addDigit(8)}>8</NumberEach>
+            <NumberEach onClick={() => addDigit(9)}>9</NumberEach>
+          </ThreeNumberBox>
+          <NumberEach onClick={() => addDigit(0)}>0</NumberEach>
+        </NumberBox>
+      )}
+
       <BottomBar></BottomBar>
     </>
   );
