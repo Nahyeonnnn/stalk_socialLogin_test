@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import SearchRecent from './searchRecent';
+// import SearchRecent from './searchRecent';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
@@ -219,16 +219,17 @@ const SearchBar = () => {
     //axios 연결 시 주식 리스트를 저장할 변수
     const [stockList, setStockList]=useState(testList);
     //검색어를 저장하기 위한 useState
+    setStockList(testList);
     const [query, setQuery]=useState("");
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions]=useState(false);
     const [recentSearchData, setRecentSearch]=useState([]);//최근 검색한 데이터 useState
     const date = new Date();
     
-    const YYYY = date.getFullYear();
-    const MM = (date.getMonth()+1) < 10 ? `0${date.getMonth()+1}` : date.getMonth()+1;
-    const DD = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
-    const YYYYMMDD = YYYY+MM+DD;
+    // const YYYY = date.getFullYear();
+    // const MM = (date.getMonth()+1) < 10 ? `0${date.getMonth()+1}` : date.getMonth()+1;
+    // const DD = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+    // const YYYYMMDD = YYYY+MM+DD;
 
     useEffect(()=>{
         axios
@@ -250,24 +251,24 @@ const SearchBar = () => {
     },[]);//실험용
 
     //testList에 현재 주식 가격, 증가율, 가격이 얼마만큼 증가했는지 axios 연결 각각 해서 찾기...
-    testList.map((item)=>{
-        axios
-            .get(`https://stalksound.store/sonification/now_data/`, {
-                params: {
-                    symbol : item.code,
-            }})
-            .then((res)=>{
-                // item["now_price"] = res.data.현재가;
-                // item["increased_price"] = res.data.
-                // item["increased_percent"] = 
-            })
-            .catch((e)=>{
-                console.log(e);
-                item["now_price"] = "";
-                item["increased_price"] = "";
-                item["increased_percent"] = "";
-            });
-    })
+    // testList.map((item)=>{
+    //     axios
+    //         .get(`https://stalksound.store/sonification/now_data/`, {
+    //             params: {
+    //                 symbol : item.code,
+    //         }})
+    //         .then((res)=>{
+    //             // item["now_price"] = res.data.현재가;
+    //             // item["increased_price"] = res.data.
+    //             // item["increased_percent"] = 
+    //         })
+    //         .catch((e)=>{
+    //             console.log(e);
+    //             item["now_price"] = "";
+    //             item["increased_price"] = "";
+    //             item["increased_percent"] = "";
+    //         });
+    // })
 
     console.log(stockList);
 
@@ -290,18 +291,18 @@ const SearchBar = () => {
     }
 
     //중간 검색 과정에서의 키워드를 저장하는 함수
-    const handleSelectSuggestion = (suggestion) => {
-        setQuery(suggestion.prdt_name);
-        setSuggestions([]);
-        setShowSuggestions(false);
-    }
+    // const handleSelectSuggestion = (suggestion) => {
+    //     setQuery(suggestion.prdt_name);
+    //     setSuggestions([]);
+    //     setShowSuggestions(false);
+    // }
 
-    const searchData = (query) => {
-        const results = stockList.filter((item)=>
-            item.prdt_name.includes(query)
-        );
-        return results;
-    }
+    // const searchData = (query) => {
+    //     const results = stockList.filter((item)=>
+    //         item.prdt_name.includes(query)
+    //     );
+    //     return results;
+    // }
 
     const handleKeyPress = (e) => {
         if(e.key === "Enter"){
