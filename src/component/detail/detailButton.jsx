@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const BtnContainer = styled.div`
     display : flex;
@@ -21,9 +21,9 @@ const BtnBox = styled.div`
 const DetailButton = () => {
     const navigate = useNavigate();
 
-    function moveToTrade(){
-        navigate(`/trade`); // 
-    }
+    // function moveToTrade(){
+    //     navigate(`/trade`); // 
+    // }
     return (
         <>
             <BtnContainer>
