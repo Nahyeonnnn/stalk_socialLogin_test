@@ -29,31 +29,31 @@ const InvestBox = styled.div`
   padding: 1rem 2rem 3rem 2rem;
 `;
 
-const Invest_1 = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 80vw;
-  height: 12vw;
-  color: white;
-  font-size: 1.2rem;
-`;
+// const Invest_1 = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   width: 80vw;
+//   height: 12vw;
+//   color: white;
+//   font-size: 1.2rem;
+// `;
 
-const Invest_1_name = styled.div`
-  width: 30vw;
-`;
+// const Invest_1_name = styled.div`
+//   width: 30vw;
+// `;
 
-const Invest_1_price = styled.div`
-  width: 25vw;
-  display: flex;
-  justify-content: flex-end;
-`;
+// const Invest_1_price = styled.div`
+//   width: 25vw;
+//   display: flex;
+//   justify-content: flex-end;
+// `;
 
-const Invest_1_rate = styled.div`
-  color: skyblue;
-  width: 25vw;
-  display: flex;
-  justify-content: flex-end;
-`;
+// const Invest_1_rate = styled.div`
+//   color: skyblue;
+//   width: 25vw;
+//   display: flex;
+//   justify-content: flex-end;
+// `;
 
 const MainMyInvest = () => {
   return (
