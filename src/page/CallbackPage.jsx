@@ -22,7 +22,7 @@ const CallbackPage = () => {
             .catch((e)=>{
                 console.log(e);
             })
-    },[]);
+    },[code]);
 
     return (
         <div>
