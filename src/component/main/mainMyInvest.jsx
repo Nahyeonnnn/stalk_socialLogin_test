@@ -65,7 +65,7 @@ const MainMyInvest = () => {
         </AmountTextRight>
       </AmountBox>
       <InvestBox>
-        <Invest_1>
+{/*         <Invest_1>
           <Invest_1_name>AT&T Inc.</Invest_1_name>
           <Invest_1_price>32,445 $</Invest_1_price>
           <Invest_1_rate>0,09%</Invest_1_rate>
@@ -99,7 +99,7 @@ const MainMyInvest = () => {
           <Invest_1_name>AT&T Inc.</Invest_1_name>
           <Invest_1_price>32,445 $</Invest_1_price>
           <Invest_1_rate>0,09%</Invest_1_rate>
-        </Invest_1>
+        </Invest_1> */}
       </InvestBox>
     </>
   );
