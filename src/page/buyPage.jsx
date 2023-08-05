@@ -120,7 +120,7 @@ const TextEach = styled.button`
 const BuyPage = () => {
   const [inputValue, setInputValue] = useState("");
   const [active, setActive] = useState(0);
-  const [inputLength, setInputLength] = useState(0); // State to keep track of input length
+  // const [inputLength, setInputLength] = useState(0); // State to keep track of input length
 
   // This function adds the passed digit to the current input
   const addDigit = (digit) => {
