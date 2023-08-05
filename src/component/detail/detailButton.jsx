@@ -19,7 +19,7 @@ const BtnBox = styled.div`
 `
 
 const DetailButton = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // function moveToTrade(){
     //     navigate(`/trade`); // 
