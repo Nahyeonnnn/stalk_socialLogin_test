@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { styled } from 'styled-components';
 import LoginButton from './kakao_login_large_narrow.png';
 
