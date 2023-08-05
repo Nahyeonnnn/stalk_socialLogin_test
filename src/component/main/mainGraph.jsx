@@ -36,7 +36,7 @@ const ChartButton = styled.button`
 
 const MainGraph = () => {
   const [activeButton, setActiveButton] = useState(1);
-  const [shouldAnimate, setShouldAnimate] = useState(true);
+  // const [shouldAnimate, setShouldAnimate] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
