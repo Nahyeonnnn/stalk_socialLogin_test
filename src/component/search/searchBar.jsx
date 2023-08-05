@@ -224,7 +224,7 @@ const SearchBar = () => {
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions]=useState(false);
     const [recentSearchData, setRecentSearch]=useState([]);//최근 검색한 데이터 useState
-    const date = new Date();
+    // const date = new Date();
     
     // const YYYY = date.getFullYear();
     // const MM = (date.getMonth()+1) < 10 ? `0${date.getMonth()+1}` : date.getMonth()+1;
