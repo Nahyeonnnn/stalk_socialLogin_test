@@ -44,9 +44,9 @@ const CallbackPage = () => {
         document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=None; Secure`;
     };
 
-    // const deleteCookie = (name) => {
-    //     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    // };
+    const deleteCookie = (name) => {
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    };
 
     useEffect(()=>{
         axios
@@ -78,7 +78,18 @@ const CallbackPage = () => {
             })
     }
 
-    
+    function LogOutButton() {
+        axios
+            .get(`https://stalksound.store/accounts/kakao/logout/`,{withCredentials: true})
+            .then((res)=>{
+                console.log(res);
+                deleteCookie('accessToken');
+                deleteCookie('refreshToken');
+            })
+            .catch((e)=>{
+                console.log(e);
+            })
+    }
 
     return (
         <CallbackDiv>
@@ -87,7 +98,8 @@ const CallbackPage = () => {
             <LoginMsg>로그인 완료.</LoginMsg>
             <HorizonLine></HorizonLine>
             <LoginMsg>5초 후에 메인 페이지로 이동합니다.</LoginMsg>
-            <button onClick={GetUserInfo}>userinfo 연습</button>         
+            <button onClick={GetUserInfo}>userinfo 연습</button>
+            <button onClick={LogOutButton}>로그아웃 버튼 연습</button>
         </CallbackDiv>
     );
 };
