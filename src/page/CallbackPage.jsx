@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { React, useEffect} from 'react';
-// import { useNavigate} from 'react-router-dom';
-//import { library } from "@fortawesome/fontawesome-svg-core";
+import { useNavigate} from 'react-router-dom';
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { styled } from 'styled-components';
+
+axios.defaults.withCredentials = true;
 
 const CallbackDiv = styled.div`
     display: flex;
@@ -32,7 +34,7 @@ const HorizonLine = styled.div`
 `;
 
 const CallbackPage = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const code = window.location.search;
     const code = new URL(document.location.toString()).searchParams.get('code');
     console.log(code);
@@ -67,13 +69,12 @@ const CallbackPage = () => {
 
     function GetUserInfo(){
         axios
-            .get(`https://stalksound.store/accounts/userinfo/`,{
-                withCredentials: true
+            .get(`https://stalksound.store/accounts/userinfo/`
                 // headers : {
                 //     access : localStorage.getItem('accessToken'),
                 //     refresh : localStorage.getItem('refreshToken'),
                 // }
-            })
+            )
             .then((res)=>{
                 console.log(res);
             })
