@@ -48,6 +48,20 @@ const CallbackPage = () => {
         document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     };
 
+    const getCookie = (name) => {
+        const cookieString = decodeURIComponent(document.cookie);
+        const cookies = cookieString.split(';');
+    
+        for (const cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+    
+            if (cookieName.trim() === name) {
+                return cookieValue;
+            }
+        }
+        return null; // 해당하는 쿠키가 없는 경우
+    }    
+
     useEffect(()=>{
         axios
             .get(`https://stalksound.store/accounts/kakao/callback/`,{
@@ -57,8 +71,8 @@ const CallbackPage = () => {
             .then((res)=>{
                 console.log('로그인 성공~');
                 console.log(res);
-                localStorage.setItem('accessToken', res.data.token.access);
-                localStorage.setItem('refreshToken',res.data.token.refresh);
+                // localStorage.setItem('accessToken', res.data.token.access);
+                // localStorage.setItem('refreshToken',res.data.token.refresh);
                 setCookie('accessToken', res.data.token.access, 1);
                 setCookie('refreshToken', res.data.token.refresh, 1);
             })
@@ -72,7 +86,7 @@ const CallbackPage = () => {
             .get(`https://stalksound.store/accounts/userinfo/`,{
             withCredentials: true,
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                Authorization: `Bearer ${getCookie('accessToken')}`
             }
         })
             .then((res)=>{
@@ -96,6 +110,22 @@ const CallbackPage = () => {
             })
     }
 
+    function Test403(){
+        axios
+            .get(`https://stalksound.store/accounts/test403/`,{
+                withCredentials: true,
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+            .then((res)=>{
+                console.log(res);
+            })
+            .catch((e)=>{
+                console.log(e);
+            })
+    }
+
     return (
         <CallbackDiv>
             <CheckIcon icon={faCircleCheck} size="4x"/>
@@ -105,6 +135,7 @@ const CallbackPage = () => {
             <LoginMsg>5초 후에 메인 페이지로 이동합니다.</LoginMsg>
             <button onClick={GetUserInfo}>userinfo 연습</button>
             <button onClick={LogOutButton}>로그아웃 버튼 연습</button>
+            <button onClick={Test403}>Text403</button>
         </CallbackDiv>
     );
 };
