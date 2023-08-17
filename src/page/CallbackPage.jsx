@@ -69,9 +69,12 @@ const CallbackPage = () => {
 
     function GetUserInfo(){
         axios
-            .get(`https://stalksound.store/accounts/userinfo/`,{withCredentials: true},{
+            .get(`https://stalksound.store/accounts/userinfo/`,{
+            withCredentials: true,
+            headers: {
                 Authorization: `Bearer ${accessToken}`
-            })
+            }
+        })
             .then((res)=>{
                 console.log(res);
             })
