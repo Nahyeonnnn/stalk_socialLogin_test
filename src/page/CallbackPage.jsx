@@ -72,7 +72,7 @@ const CallbackPage = () => {
             .get(`https://stalksound.store/accounts/userinfo/`,{
             withCredentials: true,
             headers: {
-                Authorization: `Bearer ${accessToken}`
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then((res)=>{
