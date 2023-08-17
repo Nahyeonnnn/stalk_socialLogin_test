@@ -112,10 +112,10 @@ const CallbackPage = () => {
 
     function Test403(){
         axios
-            .get(`https://stalksound.store/accounts/test403/`,{
+            .get(`https://stalksound.store/accounts/test403`,{
                 withCredentials: true,
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    Authorization: `Bearer ${getCookie('accessToken')}`
                 }
             })
             .then((res)=>{
