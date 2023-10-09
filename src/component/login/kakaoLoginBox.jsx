@@ -10,7 +10,7 @@ const ButtonImg = styled.img`
 
 const KakaoLoginBox = () => {
 
-    const REST_API_KEY = 'd17a93ba147f55c5bfab1c1091b16b8e';
+    const REST_API_KEY = ''; //kakao에서 발급받은 secret key
     const REDIRECT_URI = 'https://stalk-login-test.pages.dev/kakao/callback';//kakao_callback_url
     const link = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
 
